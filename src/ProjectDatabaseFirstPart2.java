@@ -116,84 +116,13 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
-		/*
-		System.out.println("Please provide the details to connect Oracle Database");
-		System.out.println("Enter Database");
-		String dbName = scanner.next();
-		System.out.println("Enter UserName");
-		String userName = scanner.next();
-		System.out.println("Enter Password");
-		String password = scanner.next();
-		*/
-		/*
-		try {
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		Connection connection = null;
-
-		try {
-
-			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@artemis.vsnet.gmu.edu:1521/vse18c.vsnet.gmu.edu", userName,
-					password);
-
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-
-		if (connection != null) {
-			System.out.println("Successfullly connected to Oracle DB");
-		} else {
-			System.out.println("Failed to connect to Oracle DB");
-		}
-		*/
+		
 
 		/* Create an object in class gcdToGui and make the screen appear */
 		ProjectDatabaseFirstPart2 myGUI = new ProjectDatabaseFirstPart2();
 		myGUI.display();
 		
-	    /*
-		try {
-			Statement statement = connection.createStatement();
-			statement.executeUpdate("INSERT INTO employee " + "VALUES('Alyssa', 'S', 'Jones', '111222333', '06-NOV-20', 'Fairfax, VA', 'F', 30000, '987654321', 4, null)");
-		} catch(SQLException e) {
-			System.out.println("Could not insert data to database " + e.getMessage());
-		}
-		*/
-		/*try {
-			Statement statement = connection.createStatement();
-			statement.executeUpdate("DELETE FROM employee WHERE fname = 'Alyssa'");
-		} catch(SQLException e) {
-			System.out.println("Could not insert data to database " + e.getMessage());
-		}
-		*/
-	    /*
-		try {
-			String data = "";
-			Statement statement = connection.createStatement();
-			ResultSet results = statement.executeQuery("SELECT * FROM employee");
-			while(results.next()) {
-				data = results.getString("fname");
-				System.out.println("First name:      " + "row " + results.getRow() + " : " + data);
-				data = results.getString("lname");
-				System.out.println("Last name:       " + "row " + results.getRow() + " : " + data);
-				data = results.getString("ssn");
-				System.out.println("SSN:             " + "row " + results.getRow() + " : " + data);
-				data = results.getString("bdate");
-				System.out.println("Birth date:      " + "row " + results.getRow() + " : " + data);
-				System.out.println();
-				
-			}
-		} catch(SQLException e) {
-			System.out.println("Could not retrieve data from the database " + e.getMessage());
-		}
-		*/
+	   
 		
 	}
 	
@@ -337,16 +266,13 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		dnoPanel.add(dnoLabel);
 		enterDnoPanel.add(enterDnoLabel);
 		dnoPanel.add(dnoInputText);
-		//insertInfoForButtonPanel.add(insertInfoButton);
 		dnoPanel.add(insertInfoButton);
 		/* Insert project */
 		projectPanel.add(projectLabel);
 		enterProjectPanel.add(enterProjectLabel);
 		projectPanel.add(projectInputText);
 		projectPanel.add(enterProjectButton);
-		//enterProjectForButtonPanel.add(enterProjectButton);
 		yesPanel.add(yesCheckBox);
-		//noPanel.add(noCheckBox);
 		yesPanel.add(noCheckBox);
 		
 
@@ -559,7 +485,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 					if(totalHoursWorked <= 40) {
 						Statement statement = connection.createStatement();
 						statement.executeUpdate("INSERT INTO works_on  " + "VALUES ('111223333',"+project[0]+", "+project[1]+")");
-						//statement.executeUpdate("DELETE FROM works_on WHERE essn = '111223333'");
 						System.out.println("Works On information");
 						ResultSet results = statement.executeQuery("SELECT * FROM works_on");
 						while(results.next()) {
@@ -577,9 +502,7 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 						totalHoursWorked=totalHoursWorked-project[1];
 						projectInputText.setText(stringText);
 					}
-			        //data = results.getString("lname");
-					//System.out.println("Last name:        " + data);
-			        //statement.executeUpdate("INSERT INTO employee " + "VALUES ('" + getFname +"','"+getMinit+"','"+getLname+"',"+getSSN+",'"+getBdate+"','"+getAddress+"','"+getSex+"',"+getSalary+","+getSuperSSN+","+getDno+",null)");
+			       
 			}catch(SQLException ex) {
 				System.out.println("Could not retrieve data from the database " + ex.getMessage());
 			}
@@ -703,7 +626,7 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 				checkSSNinputText.setText(stringText);
 				//System.exit(0);
 			}
-			//checkSSNinputText.setText(stringText);
+			
 			
 		}
 	}

@@ -118,7 +118,7 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		Scanner scanner = new Scanner(System.in);
 		
 
-		/* Create an object in class gcdToGui and make the screen appear */
+		/* Create an object and make the screen appear */
 		ProjectDatabaseFirstPart2 myGUI = new ProjectDatabaseFirstPart2();
 		myGUI.display();
 		

@@ -9,7 +9,6 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
 /*
  * Connect to Oracle DB using JDBC Driver.
  */
@@ -34,7 +33,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 	JPanel superSSNPanel = new JPanel();
 	JPanel dnoPanel = new JPanel();
 	JPanel insertInfoForButtonPanel = new JPanel();
-	
 	/*Panel for the input boxes for inserting new info*/
 	JPanel enterFnamePanel = new JPanel();
 	JPanel enterMinitPanel = new JPanel();
@@ -52,8 +50,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 	JPanel enterProjectForButtonPanel = new JPanel();
 	JPanel yesPanel = new JPanel();
 	JPanel noPanel = new JPanel();
-	
-	
 	JLabel titleLabel = new JLabel();
 	JLabel checkSSNLabel = new JLabel();
 	JLabel clearFormLabel = new JLabel();
@@ -71,7 +67,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 	JLabel superSSNLabel = new JLabel();
 	JLabel dnoLabel = new JLabel();
 	JLabel insertInfoForButtonLabel = new JLabel();
-	
 	/* Label for the input boxes for inserting new info */
 	JLabel enterFnameLabel = new JLabel();
 	JLabel enterMinitLabel = new JLabel();
@@ -95,8 +90,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 	JCheckBox yesCheckBox = new JCheckBox();
 	JCheckBox noCheckBox = new JCheckBox();
 	
-	
-	
 	JTextField checkSSNinputText = new JTextField(45);
 	JTextField fnameInputText = new JTextField(15);
 	JTextField minitInputText = new JTextField(15);
@@ -112,18 +105,11 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 	
 	Connection connection = null;
 	
-	
 	public static void main(String[] args) {
-		
 		Scanner scanner = new Scanner(System.in);
-		
-
 		/* Create an object and make the screen appear */
 		ProjectDatabaseFirstPart2 myGUI = new ProjectDatabaseFirstPart2();
-		myGUI.display();
-		
-	   
-		
+		myGUI.display();	
 	}
 	
 	public ProjectDatabaseFirstPart2 () {
@@ -145,7 +131,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		superSSNPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		dnoPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		insertInfoForButtonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		
 		/* Input boxes layout */
 		enterFnamePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		enterMinitPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -163,8 +148,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		/*For check box */
 		yesPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		noPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		
-		
 		Font bigFont = new Font("Helvetica Bold", Font.BOLD, 14);
 		Font smallFont = new Font("Helvetica Bold", Font.BOLD, 13);
 		
@@ -173,7 +156,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		clearFormLabel.setFont(smallFont);
 		enterCheckSSNLabel.setFont(smallFont);
 		enterCheckSSNforButtonLabel.setFont(smallFont);
-		
 		/* Insert info set font */
 		fnameLabel.setFont(smallFont);
 		minitLabel.setFont(smallFont);
@@ -191,8 +173,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		enterProjectForButtonLabel.setFont(smallFont);
 		yesCheckBox.setFont(smallFont);
 		noCheckBox.setFont(smallFont);
-		
-		
 		/* Set name for each label */
 		titleLabel.setText("EMPLOYEE Database");
 		checkSSNLabel.setText("Check SSN");
@@ -222,19 +202,15 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		enterProjectButton.addActionListener(new InsertProject());
 		yesCheckBox.addActionListener(new Dependent());
 		noCheckBox.addActionListener(new Dependent());
-		
 		/* Labels, buttons and textFields are added to their panels */
 		titlePanel.add(titleLabel);
 		enterCheckSSNPanel.add(enterCheckSSNLabel);
-		
 		/* Add for button */
 		checkSSNPanel.add(checkSSNLabel);
 		/* Add for text field */
 		checkSSNPanel.add(checkSSNinputText);
 		checkSSNPanel.add(enterCheckSSNforButton);
 		clearFormPanel.add(clearFormButton);
-		//enterCheckSSNforButtonPanel.add(enterCheckSSNforButton);
-		
 		/*Add for inserting info */
 		fnamePanel.add(fnameLabel);
 		enterFnamePanel.add(enterFnameLabel);
@@ -274,12 +250,9 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		projectPanel.add(enterProjectButton);
 		yesPanel.add(yesCheckBox);
 		yesPanel.add(noCheckBox);
-		
-
 		/* The panels are added in the order that they should appear. Throughout the 
 		declarations and initializations variables were
 		kept in this order to aid in keeping them straight */
-		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(titlePanel);
 		/* The box for input */
@@ -314,8 +287,7 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 		add(enterProjectForButtonPanel);
 		add(yesPanel);
 		add(noPanel);
-		add(clearFormPanel);
-		
+		add(clearFormPanel);	
 	}
 	
 	public void display()
@@ -359,11 +331,9 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 			Connection connection = null;
 
 			try {
-
 				connection = DriverManager.getConnection(
 						"jdbc:oracle:thin:@artemis.vsnet.gmu.edu:1521/vse18c.vsnet.gmu.edu", userName,
 						password);
-
 			} catch (SQLException ex) {
 
 				ex.printStackTrace();
@@ -397,7 +367,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 						dependent[4] = scanner.nextLine();	
 				
 						statement.executeUpdate("INSERT INTO dependent  " + "VALUES ('"+dependent[0]+"','"+dependent[1]+"', '"+dependent[2]+"', '"+dependent[3]+"', '"+dependent[4]+"')");
-					
 					}
 					
 					System.out.println("Dependent Information");
@@ -413,8 +382,7 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 						System.out.println("Birth Date:            " + data);
 						data = results.getString("relationship");
 						System.out.println("Relationship:          " + data);
-						System.out.println();
-						
+						System.out.println();	
 					}
 				}
 				else {
@@ -423,8 +391,7 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 			}catch(SQLException ex) {
 				System.out.println("Could not retrieve data from the database " + ex.getMessage());
 			}
-		}
-			
+		}		
 	}
 	
 	String getSSN = new String();
@@ -542,11 +509,9 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 			Connection connection = null;
 
 			try {
-
 				connection = DriverManager.getConnection(
 						"jdbc:oracle:thin:@artemis.vsnet.gmu.edu:1521/vse18c.vsnet.gmu.edu", userName,
 						password);
-
 			} catch (SQLException ex) {
 
 				ex.printStackTrace();
@@ -609,7 +574,6 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 			
 	}
 	
-	
 	public class CheckSSNforManager implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
@@ -625,9 +589,7 @@ public class ProjectDatabaseFirstPart2 extends JPanel {
 				stringText = "Your SSN is not correspond to a manager";
 				checkSSNinputText.setText(stringText);
 				//System.exit(0);
-			}
-			
-			
+			}	
 		}
 	}
 	
